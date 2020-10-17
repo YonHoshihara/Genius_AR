@@ -4,31 +4,18 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public int sequence_size;
     public GameObject [] table_elements; 
-    void Start()
-    {
-        generate_sequence(5);
+    public SequenceController sequenceController;
+
+    private int[] current_sequence;
+    void Start(){
+        current_sequence = sequenceController.generate_sequence(sequence_size,table_elements);
+
+        //sequenceController.play_sequence(current_sequence, table_elements);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void play_sequence(){
+        sequenceController.play_sequence(current_sequence, table_elements);
     }
-    public List<int> generate_sequence(int sequence_size) {
-        
-        List<int> sequence  = new List<int>();
-        float generated_number = 0;
-        int table_elements_lengh = table_elements.Length;
-        for (int i=0; i<=sequence_size+1; i++){
-            generated_number =Random.Range(0, table_elements_lengh);
-            
-            Debug.Log(generated_number);
-            //sequence.Add(generated_number);   
-        }
-       
-        return sequence;
-    }
-
 }
