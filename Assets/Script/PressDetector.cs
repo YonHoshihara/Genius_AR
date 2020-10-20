@@ -1,25 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class PressDetector : MonoBehaviour
 {
     // Start is called before the first frame update
-    
+    public GameObject pressed_identifier;
+    public GameController controller;
     void OnMouseDown()
-     {
-         Debug.Log("HEEERe");
-         print (gameObject.tag);    
-     }
-    
-    void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        controller.sequence_checker(gameObject.tag);
     }
 }
