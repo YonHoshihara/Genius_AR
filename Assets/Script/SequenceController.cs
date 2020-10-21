@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SequenceController : MonoBehaviour
 {
-     public int[] generate_sequence(int sequence_size, GameObject[] table_elements) {
+    public bool can_i_press;
+    public int[] generate_sequence(int sequence_size, GameObject[] table_elements) {
         
         List<int> sequence  = new List<int>();
         int generated_number = 0;
@@ -34,6 +35,7 @@ public class SequenceController : MonoBehaviour
     }
 
     private IEnumerator show_sequence(int[] sequence,GameObject[] table_elements){
+        can_i_press = false;
         int index = 0;
         for(int i = 0; i<sequence.Length;i++){
             index = sequence[i];
@@ -44,6 +46,6 @@ public class SequenceController : MonoBehaviour
             yield return new WaitForSeconds(1f);
             
         }
+        can_i_press = true;
     }
-
 }
