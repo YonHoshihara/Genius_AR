@@ -5,7 +5,6 @@ using UnityEngine.Events;
 public class PressDetector : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject pressed_identifier;
     public GameController controller;
     private Animator anim;
 

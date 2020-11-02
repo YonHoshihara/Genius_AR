@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -19,7 +20,6 @@ public class GameController : MonoBehaviour
     private int error_counter = 1;
     void Start() {
         reset_sequence();
-        play_sequence();
     }
 
     public void Update()
@@ -33,7 +33,11 @@ public class GameController : MonoBehaviour
         current_sequence_tags = sequence_controller.get_sequence_tags(current_sequence, table_elements);
     }
     public void play_sequence(){
-        sequence_controller.play_sequence(current_sequence, table_elements);
+
+        if (gameObject.activeSelf)
+        {
+            sequence_controller.play_sequence(current_sequence, table_elements);
+        }
     }
     public void sequence_checker(string table_element_tag)
     {
@@ -71,6 +75,11 @@ public class GameController : MonoBehaviour
     {
         StartCoroutine(instantiate_on_time(obj, time));
     }
+    
+    public void load_scene(string scene)
+    {
+        SceneManager.LoadScene(scene);
+    }
     public IEnumerator instantiate_on_time(GameObject obj, float time)
     {
         obj.SetActive(true);
@@ -78,4 +87,5 @@ public class GameController : MonoBehaviour
         obj.SetActive(false);
         
     }
-}
+    
+}   
