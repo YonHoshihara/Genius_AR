@@ -5,13 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public int sequence_size;
+    //public int sequence_size;
+    public float score_correct;
     public GameObject [] table_elements; 
     public SequenceController sequence_controller;
     public ScoreController score_controller;
     public GameObject error_feedback;
     public GameObject correct_feedback;
     public GameObject failed_feedback;
+    public GameObject all_correct_feedback;
     public int max_error;
     private int sequence_counter;
     private int[] current_sequence;
@@ -19,6 +21,7 @@ public class GameController : MonoBehaviour
     private string[] current_sequence_tags;
     private int error_counter = 1;
     void Start() {
+        
         reset_sequence();
     }
 
@@ -29,7 +32,7 @@ public class GameController : MonoBehaviour
     private void reset_sequence()
     {
         sequence_counter = 0;
-        current_sequence = sequence_controller.generate_sequence(sequence_size, table_elements);
+        current_sequence = sequence_controller.generate_sequence(sequence_controller.sequence_lengh, table_elements);
         current_sequence_tags = sequence_controller.get_sequence_tags(current_sequence, table_elements);
     }
     public void play_sequence(){
@@ -41,12 +44,12 @@ public class GameController : MonoBehaviour
     }
     public void sequence_checker(string table_element_tag)
     {
-        if (sequence_counter < current_sequence_tags.Length)
+        if (sequence_counter < current_sequence_tags.Length -1)
         {
             if (current_sequence_tags[sequence_counter] == table_element_tag)
             {
                 feedback_show(correct_feedback, 1f);
-                score_controller.add_score(10.0f);
+                score_controller.add_score(score_correct);
                 sequence_counter++;
             }
             else
@@ -56,7 +59,7 @@ public class GameController : MonoBehaviour
                     feedback_show(error_feedback, 1f);               
                     error_counter++;
                     play_sequence();
-                    sequence_counter = 1;
+                    sequence_counter = 0;
                 }
                 else
                 {
@@ -68,6 +71,10 @@ public class GameController : MonoBehaviour
         }
         else
         {
+            feedback_show(all_correct_feedback, 1f);
+            score_controller.add_score(score_correct);
+            sequence_controller.set_sequence_correct();
+            reset_sequence();
             Debug.Log("Tudo Correto");
         }
     }

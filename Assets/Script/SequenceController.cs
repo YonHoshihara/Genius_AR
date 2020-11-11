@@ -5,6 +5,24 @@ using UnityEngine;
 public class SequenceController : MonoBehaviour
 {
     public bool can_i_press;
+    public int sequence_lengh;
+    [SerializeField] private int update_time;
+    private int sequence_correct;
+    [SerializeField] private int max_sequence_lengh;
+
+    public void set_sequence_correct()
+    {
+
+        sequence_correct++;
+        if (sequence_correct >= update_time)
+        {
+            sequence_correct = 0;
+            if (sequence_lengh<= max_sequence_lengh)
+            {
+                sequence_lengh++;
+            }
+        }
+    }
     public int[] generate_sequence(int sequence_size, GameObject[] table_elements) {
         
         List<int> sequence  = new List<int>();
