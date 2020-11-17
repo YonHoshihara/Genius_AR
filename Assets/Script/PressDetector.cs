@@ -7,7 +7,7 @@ public class PressDetector : MonoBehaviour
     // Start is called before the first frame update
     public GameController controller;
     private Animator anim;
-
+    public GameObject glow_object;
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -16,6 +16,8 @@ public class PressDetector : MonoBehaviour
     {
         if (controller.can_i_press)
         {
+           
+
             controller.sequence_checker(gameObject.tag);
             anim.SetTrigger("touched");
         }

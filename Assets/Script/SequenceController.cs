@@ -57,10 +57,15 @@ public class SequenceController : MonoBehaviour
         int index = 0;
         for(int i = 0; i<sequence.Length;i++){
             index = sequence[i];
-            
-            table_elements[index].SetActive(false);
+           
+            PressDetector pd = table_elements[index].GetComponent<PressDetector>();
+            Renderer mr = pd.glow_object.GetComponent<Renderer>();
+            Debug.Log(pd.gameObject.name);
+            mr.material.EnableKeyword("_EMISSION");
+            //table_elements[index].SetActive(false);
             yield return new WaitForSeconds(.5f);
-            table_elements[index].SetActive(true);
+            mr.material.DisableKeyword("_EMISSION");
+            //table_elements[index].SetActive(true);
             yield return new WaitForSeconds(1f);
             
         }
