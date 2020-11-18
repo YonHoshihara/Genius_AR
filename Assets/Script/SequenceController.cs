@@ -62,10 +62,8 @@ public class SequenceController : MonoBehaviour
             Renderer mr = pd.glow_object.GetComponent<Renderer>();
             Debug.Log(pd.gameObject.name);
             mr.material.EnableKeyword("_EMISSION");
-            //table_elements[index].SetActive(false);
             yield return new WaitForSeconds(.5f);
             mr.material.DisableKeyword("_EMISSION");
-            //table_elements[index].SetActive(true);
             yield return new WaitForSeconds(1f);
             
         }
