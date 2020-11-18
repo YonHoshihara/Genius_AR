@@ -60,7 +60,8 @@ public class SequenceController : MonoBehaviour
            
             PressDetector pd = table_elements[index].GetComponent<PressDetector>();
             Renderer mr = pd.glow_object.GetComponent<Renderer>();
-            Debug.Log(pd.gameObject.name);
+            SoundController sc = pd.glow_object.GetComponent<SoundController>();
+            sc.playRoarSound();
             mr.material.EnableKeyword("_EMISSION");
             yield return new WaitForSeconds(.5f);
             mr.material.DisableKeyword("_EMISSION");
