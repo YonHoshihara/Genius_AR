@@ -16,6 +16,8 @@ public class PressDetector : MonoBehaviour
         sc = glow_object.GetComponent<SoundController>();
         rd = glow_object.GetComponent<Renderer>();
     }
+
+
     void OnMouseDown()
     {
         if (controller.can_i_press)
@@ -30,7 +32,7 @@ public class PressDetector : MonoBehaviour
     IEnumerator press_feedback()
     {
         controller.sequence_checker(gameObject.tag);
-        sc.playRoarSound();
+        //sc.playRoarSound();
         anim.SetTrigger("touched");
         sc.playRoarSound();
         rd.material.EnableKeyword("_EMISSION");
