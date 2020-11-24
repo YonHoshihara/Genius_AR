@@ -20,6 +20,7 @@ Texture2D:
   m_MipCount: 1
   m_IsReadable: 1
   m_IgnoreMasterTextureLimit: 0
+  m_IsPreProcessed: 0
   m_StreamingMipmaps: 0
   m_StreamingMipmapsPriority: 0
   m_AlphaIsTransparency: 0
@@ -108,9 +109,9 @@ Material:
     - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 0.9
-    - _ScaleRatioB: 0.73125
-    - _ScaleRatioC: 0.73125
+    - _ScaleRatioA: 1
+    - _ScaleRatioB: 1
+    - _ScaleRatioC: 1
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -156,7 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hashCode: -2042930531
   material: {fileID: -3195586631045046498}
-  materialHashCode: 161356172
+  materialHashCode: -1542015459
   m_Version: 1.1.0
   m_SourceFontFileGUID: d3f170207efdf1e4ca2ab406512ab360
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: d3f170207efdf1e4ca2ab406512ab360,
@@ -1376,6 +1377,7 @@ MonoBehaviour:
   m_AtlasTextures:
   - {fileID: -4775868435102867174}
   m_AtlasTextureIndex: 0
+  m_IsMultiAtlasTexturesEnabled: 0
   m_UsedGlyphRects:
   - m_X: 0
     m_Y: 0
