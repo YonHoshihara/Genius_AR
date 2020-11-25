@@ -10,9 +10,11 @@ public class LevelController : MonoBehaviour
     [SerializeField] private GameObject hard_table;
     [SerializeField] private GameObject level_menu;
     [SerializeField] private Animator level_menu_animator;
- 
+    public bool is_active_level_menu;
     IEnumerator Start()
     {
+
+        is_active_level_menu = false;
         while (true)
         {
          
@@ -44,10 +46,12 @@ public class LevelController : MonoBehaviour
     }
     public void active_level_menu()
     {
+        is_active_level_menu = true;
         level_menu_animator.SetTrigger("active");
     }
     public void deactive_level_menu()
     {
+        is_active_level_menu = false;
         level_menu_animator.SetTrigger("deactive");
     }
     // Update is called once per frame

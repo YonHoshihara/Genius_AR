@@ -9,7 +9,24 @@ public class SequenceController : MonoBehaviour
     [SerializeField] private int update_time;
     private int sequence_correct;
     [SerializeField] private int max_sequence_lengh;
+    public LevelController level_controller;
+    private bool can_i_check = true;
 
+    void Update()
+    {
+        if (can_i_check)
+        {
+            if (level_controller.is_active_level_menu)
+            {
+                can_i_press = false;
+            }
+            else
+            {
+                can_i_press = true;
+            }
+        }
+     
+    }
     public void set_sequence_correct()
     {
 
@@ -53,6 +70,7 @@ public class SequenceController : MonoBehaviour
     }
 
     private IEnumerator show_sequence(int[] sequence,GameObject[] table_elements){
+        can_i_check = false;
         can_i_press = false;
         int index = 0;
         for(int i = 0; i<sequence.Length;i++){
@@ -70,6 +88,7 @@ public class SequenceController : MonoBehaviour
             yield return new WaitForSeconds(1f);
             
         }
+        can_i_check = true;
         can_i_press = true;
     }
 }
