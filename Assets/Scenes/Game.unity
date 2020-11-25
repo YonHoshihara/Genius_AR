@@ -3012,6 +3012,11 @@ PrefabInstance:
       propertyPath: level_controller
       value: 
       objectReference: {fileID: 2011950444}
+    - target: {fileID: 1276996276767373983, guid: d403f7c2593a20b46b29cc639609265e,
+        type: 3}
+      propertyPath: sequence_update_lenght
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3576948495993118433, guid: d403f7c2593a20b46b29cc639609265e,
         type: 3}
       propertyPath: error_feedback
@@ -3194,13 +3199,18 @@ PrefabInstance:
     - target: {fileID: 4543272367839164768, guid: d6e30af02741f544983cca4e09029424,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7484488526012828899, guid: d6e30af02741f544983cca4e09029424,
         type: 3}
       propertyPath: level_controller
       value: 
       objectReference: {fileID: 2011950444}
+    - target: {fileID: 7484488526012828899, guid: d6e30af02741f544983cca4e09029424,
+        type: 3}
+      propertyPath: sequence_update_lenght
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6e30af02741f544983cca4e09029424, type: 3}
 --- !u!1001 &6620434517818872064
@@ -3234,7 +3244,7 @@ PrefabInstance:
     - target: {fileID: 6620434517671457711, guid: aacd4aa6ef3404046b1844fe4722de2e,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6620434517671457712, guid: aacd4aa6ef3404046b1844fe4722de2e,
         type: 3}
@@ -3316,6 +3326,11 @@ PrefabInstance:
       propertyPath: level_controller
       value: 
       objectReference: {fileID: 2011950444}
+    - target: {fileID: 6620434517671457714, guid: aacd4aa6ef3404046b1844fe4722de2e,
+        type: 3}
+      propertyPath: sequence_update_lenght
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6620434517671457715, guid: aacd4aa6ef3404046b1844fe4722de2e,
         type: 3}
       propertyPath: score_text

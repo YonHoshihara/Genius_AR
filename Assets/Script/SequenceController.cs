@@ -5,13 +5,16 @@ using UnityEngine;
 public class SequenceController : MonoBehaviour
 {
     public bool can_i_press;
-    public int sequence_lengh;
-    [SerializeField] private int update_time;
+    public int sequence_update_lenght;
     private int sequence_correct;
-    [SerializeField] private int max_sequence_lengh;
     public LevelController level_controller;
     private bool can_i_check = true;
+    private List<int> sequence  = new List<int>();
+    
+    void Start (){
 
+    }
+    
     void Update()
     {
         if (can_i_check)
@@ -27,22 +30,10 @@ public class SequenceController : MonoBehaviour
         }
      
     }
-    public void set_sequence_correct()
-    {
 
-        sequence_correct++;
-        if (sequence_correct >= update_time)
-        {
-            sequence_correct = 0;
-            if (sequence_lengh<= max_sequence_lengh)
-            {
-                sequence_lengh++;
-            }
-        }
-    }
     public int[] generate_sequence(int sequence_size, GameObject[] table_elements) {
         
-        List<int> sequence  = new List<int>();
+        sequence  = new List<int>();
         int generated_number = 0;
         int table_elements_lengh = table_elements.Length;
         for (int i=0; i<sequence_size; i++){
@@ -50,6 +41,17 @@ public class SequenceController : MonoBehaviour
             sequence.Add(generated_number);
         }
     
+        return sequence.ToArray();
+    }
+
+    public int [] update_sequence(int sequence_update_size,GameObject[] table_elements){
+
+        int generated_number = 0;
+        int table_elements_lengh = table_elements.Length;
+        for (int i=0; i<sequence_update_size; i++){
+            generated_number = Random.Range(0, table_elements_lengh);
+            sequence.Add(generated_number);
+        }
         return sequence.ToArray();
     }
 

@@ -32,7 +32,13 @@ public class GameController : MonoBehaviour
     private void reset_sequence()
     {
         sequence_counter = 0;
-        current_sequence = sequence_controller.generate_sequence(sequence_controller.sequence_lengh, table_elements);
+        current_sequence = sequence_controller.generate_sequence(2, table_elements);
+        current_sequence_tags = sequence_controller.get_sequence_tags(current_sequence, table_elements);
+    }
+
+    private void update_sequence(){
+        sequence_counter = 0;
+        current_sequence = sequence_controller.update_sequence(sequence_controller.sequence_update_lenght,table_elements);
         current_sequence_tags = sequence_controller.get_sequence_tags(current_sequence, table_elements);
     }
     public void play_sequence(){
@@ -73,8 +79,7 @@ public class GameController : MonoBehaviour
         {
             feedback_show(all_correct_feedback, 1f);
             score_controller.add_score(score_correct);
-            sequence_controller.set_sequence_correct();
-            reset_sequence();
+            update_sequence();
             Debug.Log("Tudo Correto");
         }
     }

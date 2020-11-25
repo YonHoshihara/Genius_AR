@@ -54,10 +54,5 @@ public class LevelController : MonoBehaviour
         is_active_level_menu = false;
         level_menu_animator.SetTrigger("deactive");
     }
-    // Update is called once per frame
-  
-    void Update()
-    {
-        
-    }
+
 }
