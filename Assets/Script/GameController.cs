@@ -48,7 +48,13 @@ public class GameController : MonoBehaviour
             sequence_controller.play_sequence(current_sequence, table_elements);
         }
     }
-    public void sequence_checker(string table_element_tag)
+
+    public void active_sequence_checker(string table_element_tag)
+    {
+        StartCoroutine(sequence_checker(table_element_tag));
+    }
+    
+    private IEnumerator sequence_checker(string table_element_tag)
     {
         if (sequence_counter < current_sequence_tags.Length -1)
         {
@@ -64,6 +70,7 @@ public class GameController : MonoBehaviour
                 {
                     feedback_show(error_feedback, 1f);               
                     error_counter++;
+                    yield return new WaitForSeconds(1.5f);
                     play_sequence();
                     sequence_counter = 0;
                 }
@@ -82,6 +89,7 @@ public class GameController : MonoBehaviour
             update_sequence();
             Debug.Log("Tudo Correto");
         }
+        yield return new WaitForSeconds(.01f);
     }
     public void feedback_show(GameObject obj, float time)
     {

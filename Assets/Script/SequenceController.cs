@@ -4,33 +4,16 @@ using UnityEngine;
 
 public class SequenceController : MonoBehaviour
 {
-    public bool can_i_press;
+    public bool can_i_press = false;
     public int sequence_update_lenght;
     private int sequence_correct;
     public LevelController level_controller;
-    private bool can_i_check = true;
     private List<int> sequence  = new List<int>();
     
     void Start (){
 
     }
     
-    void Update()
-    {
-        if (can_i_check)
-        {
-            if (level_controller.is_active_level_menu)
-            {
-                can_i_press = false;
-            }
-            else
-            {
-                can_i_press = true;
-            }
-        }
-     
-    }
-
     public int[] generate_sequence(int sequence_size, GameObject[] table_elements) {
         
         sequence  = new List<int>();
@@ -72,8 +55,8 @@ public class SequenceController : MonoBehaviour
     }
 
     private IEnumerator show_sequence(int[] sequence,GameObject[] table_elements){
-        can_i_check = false;
-        can_i_press = false;
+
+        level_controller.can_i_press = false;
         int index = 0;
         for(int i = 0; i<sequence.Length;i++){
             index = sequence[i];
@@ -90,7 +73,7 @@ public class SequenceController : MonoBehaviour
             yield return new WaitForSeconds(1f);
             
         }
-        can_i_check = true;
-        can_i_press = true;
+
+        level_controller.can_i_press = true;
     }
 }

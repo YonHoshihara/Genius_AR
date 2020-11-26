@@ -6,6 +6,7 @@ public class PressDetector : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameController controller;
+    public LevelController level_controller;
     private Animator anim;
     public GameObject glow_object;
     private SoundController sc;
@@ -20,18 +21,14 @@ public class PressDetector : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (controller.can_i_press)
+        if (level_controller.can_i_press)
         {
-
-
             StartCoroutine(press_feedback());
-           
-
         }
     }
     IEnumerator press_feedback()
     {
-        controller.sequence_checker(gameObject.tag);
+        controller.active_sequence_checker(gameObject.tag);
         //sc.playRoarSound();
         anim.SetTrigger("touched");
         sc.playRoarSound();

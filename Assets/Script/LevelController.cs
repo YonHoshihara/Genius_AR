@@ -11,20 +11,11 @@ public class LevelController : MonoBehaviour
     [SerializeField] private GameObject level_menu;
     [SerializeField] private Animator level_menu_animator;
     public bool is_active_level_menu;
-    IEnumerator Start()
-    {
-
-        is_active_level_menu = false;
-        while (true)
-        {
-         
-            yield return new WaitForSeconds(.1f);
-
-        }
-    }
-
+    public bool can_i_press;
+  
     public void select_easy()
     {
+        can_i_press = false;
         easy_table.SetActive(true);
         medium_table.SetActive(false);
         hard_table.SetActive(false);
@@ -32,6 +23,7 @@ public class LevelController : MonoBehaviour
     }
     public void select_medium()
     {
+        can_i_press = false;
         medium_table.SetActive(true);
         easy_table.SetActive(false);
         hard_table.SetActive(false);
@@ -39,6 +31,7 @@ public class LevelController : MonoBehaviour
     }
     public void select_hard()
     {
+        can_i_press = false;
         hard_table.SetActive(true);
         easy_table.SetActive(false);
         medium_table.SetActive(false);
@@ -46,6 +39,8 @@ public class LevelController : MonoBehaviour
     }
     public void active_level_menu()
     {
+
+        can_i_press = false;
         is_active_level_menu = true;
         level_menu_animator.SetTrigger("active");
     }
@@ -53,6 +48,7 @@ public class LevelController : MonoBehaviour
     {
         is_active_level_menu = false;
         level_menu_animator.SetTrigger("deactive");
+       
     }
 
 }
