@@ -17,9 +17,9 @@ public class GameController : MonoBehaviour
     public int max_error;
     private int sequence_counter;
     private int[] current_sequence;
-    public bool can_i_press;
     private string[] current_sequence_tags;
     private int error_counter = 1;
+    public LevelController level_controller;
     void Start() {
         
         reset_sequence();
@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour
 
     public void Update()
     {
-        can_i_press = sequence_controller.can_i_press;
+   
     }
     private void reset_sequence()
     {
@@ -60,34 +60,44 @@ public class GameController : MonoBehaviour
         {
             if (current_sequence_tags[sequence_counter] == table_element_tag)
             {
+
+              
                 feedback_show(correct_feedback, 1f);
                 score_controller.add_score(score_correct);
                 sequence_counter++;
+               
             }
             else
             {
+
+                level_controller.can_i_press = false;
                 if (error_counter < max_error)
                 {
                     feedback_show(error_feedback, 1f);               
                     error_counter++;
-                    yield return new WaitForSeconds(1.5f);
+                    yield return new WaitForSeconds(2f);
                     play_sequence();
                     sequence_counter = 0;
                 }
                 else
                 {
+                    level_controller.can_i_press = false;
                     feedback_show(failed_feedback, 1f);
                     Debug.Log("Errado e resetado");
                     reset_sequence();
                 }
+               
             }
         }
         else
         {
+
+            level_controller.can_i_press = false;
             feedback_show(all_correct_feedback, 1f);
             score_controller.add_score(score_correct);
             update_sequence();
             Debug.Log("Tudo Correto");
+           
         }
         yield return new WaitForSeconds(.01f);
     }
@@ -105,7 +115,6 @@ public class GameController : MonoBehaviour
         obj.SetActive(true);
         yield return new WaitForSeconds(time);
         obj.SetActive(false);
-        
     }
     
 }   

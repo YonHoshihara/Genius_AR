@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SequenceController : MonoBehaviour
 {
-    public bool can_i_press = false;
     public int sequence_update_lenght;
     private int sequence_correct;
     public LevelController level_controller;

@@ -28,6 +28,7 @@ public class PressDetector : MonoBehaviour
     }
     IEnumerator press_feedback()
     {
+ 
         controller.active_sequence_checker(gameObject.tag);
         //sc.playRoarSound();
         anim.SetTrigger("touched");
@@ -36,6 +37,7 @@ public class PressDetector : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         rd.material.DisableKeyword("_EMISSION");
         yield return new WaitForSeconds(1f);
+         
     } 
 
 
