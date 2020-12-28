@@ -51,21 +51,24 @@ public class GameController : MonoBehaviour
 
     public void active_sequence_checker(string table_element_tag)
     {
+
         StartCoroutine(sequence_checker(table_element_tag));
     }
     
     private IEnumerator sequence_checker(string table_element_tag)
     {
-        if (sequence_counter < current_sequence_tags.Length -1)
+        if (sequence_counter <= (current_sequence_tags.Length-1))
         {
+
             if (current_sequence_tags[sequence_counter] == table_element_tag)
             {
-
-              
-                feedback_show(correct_feedback, 1f);
+                if(sequence_counter != current_sequence_tags.Length -1)
+                {
+                    feedback_show(correct_feedback, 1f);
+                }
                 score_controller.add_score(score_correct);
                 sequence_counter++;
-               
+
             }
             else
             {
@@ -89,15 +92,15 @@ public class GameController : MonoBehaviour
                
             }
         }
-        else
+        
+        
+        if(sequence_counter == current_sequence_tags.Length) 
         {
-
             level_controller.can_i_press = false;
             feedback_show(all_correct_feedback, 1f);
             score_controller.add_score(score_correct);
             update_sequence();
-            Debug.Log("Tudo Correto");
-           
+            Debug.Log("Tudo Correto");   
         }
         yield return new WaitForSeconds(.01f);
     }
